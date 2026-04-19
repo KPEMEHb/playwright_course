@@ -1,0 +1,23 @@
+{
+  "name": "playwright_course",
+  "version": "1.0.0",
+  "description": "my repo to practice automated Playwright checking/testing",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KPEMEHb/playwright_course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KPEMEHb/playwright_course/issues"
+  },
+  "homepage": "https://github.com/KPEMEHb/playwright_course#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0"
+  }
+}
