@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "my repo to practice automated Playwright checking/testing",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "lint": "npx eslint ."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KPEMEHb/playwright_course.git"
@@ -17,7 +19,12 @@
   },
   "homepage": "https://github.com/KPEMEHb/playwright_course#readme",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.59.1",
-    "@types/node": "^25.6.0"
+    "@types/node": "^25.6.0",
+    "eslint": "^10.2.1",
+    "eslint-plugin-playwright": "^2.10.2",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.58.2"
   }
 }
