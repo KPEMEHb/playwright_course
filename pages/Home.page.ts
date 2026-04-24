@@ -8,6 +8,6 @@ export class HomePage {
     }
 
     async openProduct(product: string): Promise<void> {
-        await this.page.getByTestId(product).click();
+        await this.page.getByAltText(product).click();
     }
 }
