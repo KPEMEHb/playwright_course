@@ -11,5 +11,5 @@ test('User is redirected to account page after login', async ({ page }) => {
     //await expect(accountPage.navigationMenu).toContainText('Oleks Past');
     await page.goto('/');
     
-    await expect(page.getByTestId('nav-menu')).toContainText('Oleks Past');
+    await expect(page.getByTestId('nav-menu')).toContainText('Jane Doe');
 });

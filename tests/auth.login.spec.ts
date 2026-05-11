@@ -8,7 +8,7 @@ const authFile = path.join(__dirname, '../playwright/.auth/user.json');
 test('User is redirected to account page after login', async ({ page }) => {
     const loginPage = new LoginPage(page);
     await page.goto('/auth/login');
-    await loginPage.performLogin('oleks.past@practicesoftwaretesting.com', 'C&3YApaZ');
+    await loginPage.performLogin('customer@practicesoftwaretesting.com', 'welcome01');
     
     await expect(page).toHaveURL('/account');
 
