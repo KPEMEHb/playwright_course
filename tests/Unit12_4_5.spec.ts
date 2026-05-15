@@ -9,7 +9,7 @@ import { HomePage } from '../pages/Home.page';
         const homePage = new HomePage(page);
         await page.goto('/');
         const allProductsPrices = await homePage.productPrice.allTextContents();
-        await homePage.sortProducts(`${sortingType}`);
+        await homePage.sortProducts(sortingType);
         const sortedProductsPrices = await homePage.productPrice.allTextContents();
         const expectedOrder = [...allProductsPrices].sort((a, b) => {
             return isAscending ? a.localeCompare(b) : b.localeCompare(a);

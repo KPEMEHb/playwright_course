@@ -19,7 +19,7 @@ export class HomePage {
     }
 
     async sortProducts(sortingType: string): Promise<void> {
-        await this.page.getByTestId('sort').selectOption(`${sortingType}`);
+        await this.page.getByTestId('sort').selectOption(sortingType);
     }
 
     async filterProducts(categoryFilter: string): Promise<void> {
