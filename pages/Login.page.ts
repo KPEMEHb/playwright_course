@@ -4,15 +4,18 @@ export class LoginPage {
     page: Page;
     emailField: Locator;
     passwordField: Locator;
+    submitLoginBtn: Locator;
     constructor(page: Page) {
         this.page = page;
         this.emailField = this.page.getByTestId('email');
         this.passwordField = this.page.getByTestId('password');
+        this.submitLoginBtn = this.page.getByTestId('login-submit');
     }
 
     async performLogin(email: string, password: string): Promise<void> {
+        await this.page.goto('/auth/login');
         await this.emailField.fill(email);
         await this.passwordField.fill(password);
-        await this.page.getByTestId('login-submit').click();
-    } 
+        await this.submitLoginBtn.click();
+    }
 }

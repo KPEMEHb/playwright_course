@@ -1,17 +1,15 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/Home.page';
+import { expect } from '@playwright/test'
+import { test } from '../fixtures';
 
 [
     { sortingType: 'name,asc', isAscending: true},
     { sortingType: 'name,desc', isAscending: false},
 ].forEach(({ sortingType, isAscending }) => {
-    test(`Verify user can perform sorting by ${sortingType}`, async ({ page }) => {
-        const homePage = new HomePage(page);
-        await page.goto('/');
-        const allProductsNames = await homePage.productName.allTextContents();
-        await homePage.sortProducts(`${sortingType}`);
+    test(`Verify user can perform sorting by ${sortingType}`, async ({ app }) => {
+        const allProductsNames = await app.HomePage.productName.allTextContents();
+        await app.HomePage.sortProducts(`${sortingType}`);
         //await page.getByTestId('sort').selectOption(`${sortingType}`);
-        const sortedProductsNames = await homePage.productName.allTextContents();
+        const sortedProductsNames = await app.HomePage.productName.allTextContents();
         const expectedOrder = [...allProductsNames].sort((a, b) => {
             return isAscending ? a.localeCompare(b) : b.localeCompare(a);
         });

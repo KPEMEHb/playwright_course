@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/Home.page';
+import { expect } from '@playwright/test'
+import { test } from '../fixtures';
 
 enum Categories {
     HandTools = 'Hammer',
@@ -7,16 +7,14 @@ enum Categories {
     Other = 'Fasteners',
 }
 
-test('Verify user can filter products by category', async ({ page }) => {
-    const homePage = new HomePage(page);
-    await page.goto('/');
-    await homePage.filterProducts(Categories.PowerTools);
-    await expect(homePage.productName.first()).toContainText('Sander', {timeout: 10000});
+test('Verify user can filter products by category', async ({ app }) => {
+    await app.HomePage.filterProducts(Categories.PowerTools);
+    await expect(app.HomePage.productName.first()).toContainText('Sander', {timeout: 10000});
     // await page.waitForFunction(() => {
     //     const firstProduct = document.querySelector('[data-test="product-name"]');
     //     return firstProduct?.textContent?.includes('Sander');
     // });
-    const allFilteredProductsNames = await homePage.productName.allTextContents();
+    const allFilteredProductsNames = await app.HomePage.productName.allTextContents();
     allFilteredProductsNames.forEach((filteredProduct) => {
        expect(filteredProduct).toContain(Categories.PowerTools);
     });
