@@ -6,6 +6,7 @@ export class HeaderFragment {
     pushNotification: Locator;
     cartQuantity: Locator;
     cartLabel: Locator;
+    navHome: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -13,6 +14,7 @@ export class HeaderFragment {
         this.pushNotification = this.page.getByRole('alert');
         this.cartQuantity = this.page.getByTestId('cart-quantity');
         this.cartLabel = this.page.getByTestId('nav-cart');
+        this.navHome = this.page.getByTestId('nav-home');
     }
 
     async openCart(): Promise<void> {
