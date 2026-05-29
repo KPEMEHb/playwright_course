@@ -5,16 +5,17 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { test, expect } from '@playwright/test'
+import { expect } from '@playwright/test'
+import { test } from '../fixtures';
 
-test('Verify product mocking', async ({ page }) => {
+test('Verify product mocking', async ({ app }) => {
     // Генеруємо 20 тестових товарів
     const mockProducts = Array.from({ length: 20 }, (_, i) => ({
         id: i + 1,
         name: `Test Product ${i + 1}`,
     }));
     
-    await page.route('https://api.practicesoftwaretesting.com/products*', async route => {
+    await app.HomePage.page.route('https://api.practicesoftwaretesting.com/products*', async route => {
         const response = await route.fetch();
         const json = await response.json();
         json.data = mockProducts;
@@ -24,9 +25,9 @@ test('Verify product mocking', async ({ page }) => {
         await route.fulfill({ response, json });
     });
 
-    await page.goto('/');
-    await page.waitForSelector('[data-test^="product"]');
+    await app.HomePage.page.goto('/');
+    await app.HomePage.page.waitForSelector('[data-test^="product"]');
 
-    const productCount = await page.getByTestId('product-name').count();
+    const productCount = await app.HomePage.productName.count();
     await expect(productCount).toBe(20);
 });
