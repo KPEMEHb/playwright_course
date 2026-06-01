@@ -8,7 +8,9 @@
 import { expect } from '@playwright/test'
 import { test } from '../fixtures';
 
-test('Verify product mocking', async ({ app }) => {
+test('Verify product mocking', {
+    tag: '@regression'
+}, async ({ app }) => {
     // Генеруємо 20 тестових товарів
     const mockProducts = Array.from({ length: 20 }, (_, i) => ({
         id: i + 1,

@@ -1,7 +1,9 @@
 import { expect } from '@playwright/test'
 import { test } from '../fixtures';
 
-test('User can view product details', async ({ app, page }) => {
+test('User can view product details',  {
+    tag: '@smoke'
+}, async ({ app, page }) => {
     await app.HomePage.openProduct('Combination Pliers');
     
     await expect(page).toHaveURL(/product\//);
