@@ -7,7 +7,9 @@ enum Categories {
     Other = 'Fasteners',
 }
 
-test('Verify user can filter products by category', async ({ app }) => {
+test('Verify user can filter products by category', {
+    tag: '@regression'
+}, async ({ app }) => {
     await app.HomePage.filterProducts(Categories.PowerTools);
     await expect(app.HomePage.productName.first()).toContainText('Sander', {timeout: 10000});
     // await page.waitForFunction(() => {
